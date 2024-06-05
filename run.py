@@ -5,8 +5,9 @@ class Board:
     """
     class for the game boards
     """
+    def __init__(self, board):
+        self.board = board
 
-    
 
 def name_and_rules():
     """"
