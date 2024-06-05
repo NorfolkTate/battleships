@@ -6,6 +6,10 @@ def name_and_rules():
     of the game
     """
     player_name = input("enter your name: \n")
-    print(f"Let's play battleships, {player_name}")
+    print("Objective: sink all of the computer's ships first\n")
+    print("Guess a row between 0 - 4")
+    print("Guess a column between 0 -4\n")
+
+    print(f"Let's play battleships, {player_name}, good luck!")
 
 name_and_rules()
