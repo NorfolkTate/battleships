@@ -1,6 +1,13 @@
 from random import randint
 
 
+class Board:
+    """
+    class for the game boards
+    """
+
+    
+
 def name_and_rules():
     """"
     function to get user's name and display the rules
@@ -14,4 +21,6 @@ def name_and_rules():
     print(f"Let's play battleships, {player_name}, good luck!")
 
 
+
 name_and_rules()
+
