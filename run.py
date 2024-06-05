@@ -1,5 +1,6 @@
 from random import randint
 
+
 def name_and_rules():
     """"
     function to get user's name and display the rules
@@ -11,5 +12,6 @@ def name_and_rules():
     print("Guess a column between 0 -4\n")
 
     print(f"Let's play battleships, {player_name}, good luck!")
+
 
 name_and_rules()
