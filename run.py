@@ -5,10 +5,17 @@ class Board:
     """
     class for the game boards
     """
-    def __init__(self, size,):
+    def __init__(self, size):
         self.board = board
         self.size = size
         self.board = [["~" for x in range(size)] for y in range(size)]
+
+    def print_board(self):
+        """
+        function to print the boards to the terminal
+        """
+        print("0 1 2 3 4")
+        print("~~~~~")
         
         
 
@@ -28,3 +35,4 @@ def name_and_rules():
 
 
 name_and_rules()
+Board()
