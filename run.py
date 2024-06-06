@@ -5,8 +5,12 @@ class Board:
     """
     class for the game boards
     """
-    def __init__(self, board):
+    def __init__(self, size,):
         self.board = board
+        self.size = size
+        self.board = [["~" for x in range(size)] for y in range(size)]
+        
+        
 
 
 def name_and_rules():
@@ -24,4 +28,3 @@ def name_and_rules():
 
 
 name_and_rules()
-
