@@ -34,6 +34,11 @@ def name_and_rules():
 
     print(f"Let's play battleships, {player_name}, good luck!")
 
+class Play:
+    def __init__(self, board):
+        self.board = board
+
+
 
 
 size = 5
