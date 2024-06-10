@@ -14,9 +14,11 @@ class Board:
     def print_board(self):
         """
         function to print the boards to the terminal
+        rows and columns start at 1 for a more user friendly experience
         """
-        print("0 1 2 3 4")
-        print("~~~~~")
+        print("  " + " ".join(str(x) for x in range(1, self.size + 1)))
+        for row_number, row in enumerate(self.board, start=1):
+            print(f"{row_number} {' '.join(row)}")
 
 
 def name_and_rules():
@@ -33,7 +35,7 @@ def name_and_rules():
 
 
 
-size = 4
+size = 5
 num_ships = 3
 game_board = Board(size, num_ships)
 
