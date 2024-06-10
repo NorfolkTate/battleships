@@ -17,8 +17,6 @@ class Board:
         """
         print("0 1 2 3 4")
         print("~~~~~")
-        
-        
 
 
 def name_and_rules():
@@ -29,7 +27,7 @@ def name_and_rules():
     player_name = input("enter your name: \n")
     print("Objective: sink all of the computer's ships first\n")
     print("Guess a row between 0 - 4")
-    print("Guess a column between 0 -4\n")
+    print("Guess a column between 0 - 4\n")
 
     print(f"Let's play battleships, {player_name}, good luck!")
 
@@ -37,7 +35,8 @@ def name_and_rules():
 
 size = 4
 num_ships = 3
+game_board = Board(size, num_ships)
+
 
 name_and_rules()
-
-Board.print_board
+game_board.print_board()
