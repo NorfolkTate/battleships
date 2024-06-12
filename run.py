@@ -38,7 +38,10 @@ class Play:
     def __init__(self, board):
         self.board = board
 
-
+    def add_ships(self):
+        """
+        function to add ships randomly to game boards
+        """
 
 
 size = 5
