@@ -38,10 +38,20 @@ class Play:
     def __init__(self, board):
         self.board = board
 
-    def add_ships(self):
+    def add_ships(self, board):
         """
         function to add ships randomly to game boards
         """
+        size = len(board)
+        placed_ships = 0
+    
+        while placed_ships < num_ships:
+            row = random.randint(0, size - 1)
+            col = random.randint(0, size - 1)
+        
+            if board[row][col] == '~': 
+                board[row][col] = 'O'
+                
 
 
 size = 5
