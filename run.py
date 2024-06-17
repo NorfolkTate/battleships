@@ -34,33 +34,48 @@ def name_and_rules():
 
     print(f"Let's play battleships, {player_name}, good luck!")
 
+
 class Play:
     def __init__(self, board):
         self.board = board
 
-    def add_ships(self, board):
+    def add_ships(self):
         """
-        function to add ships randomly to game boards
+        Function to add ships randomly to game boards
         """
-        size = len(board)
+        size = self.board.size
         placed_ships = 0
     
-        while placed_ships < num_ships:
+        while placed_ships < self.board.num_ships:
             row = random.randint(0, size - 1)
             col = random.randint(0, size - 1)
         
-            if board[row][col] == '~': 
-                board[row][col] = 'O'
-                
+            if self.board.board[row][col] == '~':
+                self.board.board[row][col] = 'O'
+                placed_ships += 1
+
+    
 
 
 size = 5
 num_ships = 3
-player_board = Board(size, num_ships, "Computer")
-comp_board = Board(size, num_ships, "Player")
 
+
+player_board = Board(size, num_ships, "Player")
+comp_board = Board(size, num_ships, "Computer")
+
+
+player_game = Play(player_board)
+comp_game = Play(comp_board)
 
 
 name_and_rules()
+
+
+
+player_board.add_ships()
+comp_board.add_ships()
+
 player_board.print_board()
 comp_board.print_board()
+
