@@ -71,11 +71,13 @@ comp_game = Play(comp_board)
 
 name_and_rules()
 
+player_game.add_ships()
+comp_game.add_ships()
 
 
-player_board.add_ships()
-comp_board.add_ships()
 
+print("\nPlayer's Board:")
 player_board.print_board()
+print("\nComputer's Board:")
 comp_board.print_board()
 
