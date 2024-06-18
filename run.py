@@ -54,7 +54,11 @@ class Play:
             if self.board.board[row][col] == '~':
                 self.board.board[row][col] = 'O'
                 placed_ships += 1
-
+    
+    def play_battleships():
+        """
+        function to make a move
+        """
     
 
 
