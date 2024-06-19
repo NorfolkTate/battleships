@@ -64,8 +64,11 @@ class Play:
         print("guess a column: predict a number between 1 - 5")
         guess_column = input("column number:")
 
-
-        
+        if guess_row == row and guess_column == col:
+            print("HIT!")
+        else:
+            if (guess_row < 1 or guess_row > 5) or (guess_column < 1 or guess_column > 5):
+                print("please guess a number between 1 - 5\n")
 
 
 size = 5
