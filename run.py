@@ -59,7 +59,13 @@ class Play:
         """
         function to make a move
         """
-    
+        print("guess a row: predict a number between 1 - 5")
+        guess_row = input("row number:")
+        print("guess a column: predict a number between 1 - 5")
+        guess_column = input("column number:")
+
+
+        
 
 
 size = 5
