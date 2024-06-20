@@ -60,6 +60,18 @@ class Play:
         """
         function to validate a player's input
         """
+        while True:
+            try:
+                print("guess a row: predict a number between 1 - 5")
+                guess_row = int(input("row number:\n")) - 1
+                print("guess a column: predict a number between 1 - 5")
+                guess_column = int(input("column number:\n")) - 1
+                if 0 <= row < size and 0 <= col < size:
+                    return row, col
+                else:
+                    print("please enter a number between 1 - 5\n")
+            except ValueError:
+                print("please enter a number between 1 - 5\n")
 
 
     def play_battleships(player_board, comp_board):
@@ -68,10 +80,7 @@ class Play:
         """
 
         while player_board.hits < player_board.num_ships and comp_board.hits < comp_board.num_ships:
-            print("guess a row: predict a number between 1 - 5")
-            guess_row = input("row number:")
-            print("guess a column: predict a number between 1 - 5")
-            guess_column = input("column number:")
+            guess_row, guess_column = validate_guess()
 
         if guess_row == row and guess_column == col:
             print("HIT!")
