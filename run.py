@@ -106,6 +106,9 @@ class Play:
         """
         function for the computer to guess
         """
+        row = random.randint(0, size - 1)
+        col = random.randint(0, size - 1)
+
 
 size = 5
 num_ships = 3
