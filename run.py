@@ -55,6 +55,13 @@ class Play:
                 self.board.board[row][col] = 'O'
                 placed_ships += 1
     
+    
+    def validate_guess():
+        """
+        function to validate a player's input
+        """
+
+
     def play_battleships(player_board, comp_board):
         """
         function to make a move
