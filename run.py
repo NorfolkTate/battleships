@@ -55,20 +55,23 @@ class Play:
                 self.board.board[row][col] = 'O'
                 placed_ships += 1
     
-    def play_battleships():
+    def play_battleships(player_board, comp_board):
         """
         function to make a move
         """
-        print("guess a row: predict a number between 1 - 5")
-        guess_row = input("row number:")
-        print("guess a column: predict a number between 1 - 5")
-        guess_column = input("column number:")
+
+        while player_board.hits < player_board.num_ships and comp_board.hits < comp_board.num_ships:
+            print("guess a row: predict a number between 1 - 5")
+            guess_row = input("row number:")
+            print("guess a column: predict a number between 1 - 5")
+            guess_column = input("column number:")
 
         if guess_row == row and guess_column == col:
             print("HIT!")
         else:
             if (guess_row < 1 or guess_row > 5) or (guess_column < 1 or guess_column > 5):
                 print("please guess a number between 1 - 5\n")
+                
 
 
 size = 5
