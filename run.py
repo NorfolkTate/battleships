@@ -22,11 +22,19 @@ class Board:
             display_row = ['~' if hide_ships and cell == 'O' else cell for cell in row]
             print(f"{row_number} {' '.join(display_row)}")
 
-    def get_guess():
+    def get_guess(self, row, col):
         """
         function to get and process a guess
         """
-
+        if self.board[row][col] == 'O':
+            self.board[row][col] = 'X' 
+            self.hits += 1
+            return True
+        elif self.board[row][col] == '~':
+            self.board[row][col] = '*' 
+            return False
+        else:
+            return False
 
 
 def name_and_rules():
@@ -94,7 +102,10 @@ class Play:
             if (guess_row < 1 or guess_row > 5) or (guess_column < 1 or guess_column > 5):
                 print("please guess a number between 1 - 5\n")
                 
-
+    def computer_turn():
+        """
+        function for the computer to guess
+        """
 
 size = 5
 num_ships = 3
