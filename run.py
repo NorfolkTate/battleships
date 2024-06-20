@@ -22,6 +22,12 @@ class Board:
             display_row = ['~' if hide_ships and cell == 'O' else cell for cell in row]
             print(f"{row_number} {' '.join(display_row)}")
 
+    def get_guess():
+        """
+        function to get and process a guess
+        """
+
+
 
 def name_and_rules():
     """"
