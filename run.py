@@ -108,12 +108,16 @@ class Play:
             
 
                 
-    def computer_turn():
+    def computer_turn(computer_has_guessed):
         """
         function for the computer to guess
         """
-        row = random.randint(0, size - 1)
-        col = random.randint(0, size - 1)
+        while True:
+            row = random.randint(0, size - 1)
+            col = random.randint(0, size - 1)
+            if (row, col) not in computer_has_guessed:
+                computer_has_guessed.add((row, col))
+                return row, col
 
 
 size = 5
