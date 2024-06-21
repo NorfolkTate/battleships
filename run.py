@@ -93,14 +93,20 @@ class Play:
         function to make a move
         """
 
+        player_has_guessed = set()
+        computer_has_guessed = set()
+
         while player_board.hits < player_board.num_ships and comp_board.hits < comp_board.num_ships:
+            print(f"{player_name}'s turn: \n")
             guess_row, guess_column = validate_guess()
 
-        if guess_row == row and guess_column == col:
-            print("HIT!")
+        if (guess_row) in player_has_guessed:
+            print("you've already guessed that!\n")
         else:
-            if (guess_row < 1 or guess_row > 5) or (guess_column < 1 or guess_column > 5):
-                print("please guess a number between 1 - 5\n")
+            player_has_guessed.add((guess_row, guess_column))
+            print("HIT!")
+            
+
                 
     def computer_turn():
         """
@@ -122,15 +128,16 @@ player_game = Play(player_board)
 comp_game = Play(comp_board)
 
 
-name_and_rules()
+player_name = name_and_rules()
 
 player_game.add_ships()
 comp_game.add_ships()
 
 
 
-print("\nPlayer's Board:")
+
 player_board.print_board(hide_ships=False)
 print("\nComputer's Board:")
 comp_board.print_board(hide_ships=True)
+
 
