@@ -100,11 +100,18 @@ class Play:
             print(f"{player_name}'s turn: \n")
             guess_row, guess_column = validate_guess()
 
-        if (guess_row) in player_has_guessed:
+        if (guess_row, guess_column) in player_has_guessed:
             print("you've already guessed that!\n")
         else:
             player_has_guessed.add((guess_row, guess_column))
-            print("HIT!")
+            if comp_board(guess_row, guess_column):
+                print("HIT!")
+            else:
+                print("MISS!")
+
+        player_board.print_board(hide_ships=False)
+        comp_board.print_board(hide_ships=True)
+
             
 
                 
@@ -140,8 +147,6 @@ comp_game.add_ships()
 
 
 
-player_board.print_board(hide_ships=False)
-print("\nComputer's Board:")
-comp_board.print_board(hide_ships=True)
+
 
 
