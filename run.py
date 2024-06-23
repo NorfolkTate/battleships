@@ -89,16 +89,16 @@ class Play:
             except ValueError:
                 print("please enter a number between 1 - 5\n")
 
-    def computer_turn(computer_has_guessed):
+    def computer_turn(self, computer_has_guessed):
         """
         function for the computer to guess
         """
         while True:
-            row = random.randint(0, size - 1)
-            column = random.randint(0, size - 1)
-            if (row, column) not in computer_has_guessed:
-                computer_has_guessed.add((row, column))
-                return row, column
+            computer_row = random.randint(0, size - 1)
+            computer_column = random.randint(0, size - 1)
+            if (computer_row, computer_column) not in computer_has_guessed:
+                computer_has_guessed.add((computer_row, computer_column))
+                return computer_row, computer_column
 
 
     def play_battleships(self, computer_board):
