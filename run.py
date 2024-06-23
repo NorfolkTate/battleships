@@ -164,7 +164,7 @@ player_game.add_ships()
 comp_game.add_ships()
 
 
-player_game.play_battleships()
+player_game.play_battleships(comp_board)
 
 
 
