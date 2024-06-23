@@ -10,6 +10,7 @@ class Board:
         self.size = size
         self.board = [["~" for x in range(size)] for y in range(size)]
         self.num_ships = num_ships
+        self.hits = 0
         self.type = type
 
     def print_board(self, hide_ships = False):
