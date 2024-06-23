@@ -23,16 +23,16 @@ class Board:
             display_row = ['~' if hide_ships and cell == 'O' else cell for cell in row]
             print(f"{row_number} {' '.join(display_row)}")
 
-    def get_guess(self, row, col):
+    def get_guess(self, row, column):
         """
         function to get and process a guess
         """
-        if self.board[row][col] == 'O':
-            self.board[row][col] = 'X' 
+        if self.board[row][column] == 'O':
+            self.board[row][column] = 'X' 
             self.hits += 1
             return True
-        elif self.board[row][col] == '~':
-            self.board[row][col] = '*' 
+        elif self.board[row][column] == '~':
+            self.board[row][column] = '*' 
             return False
         else:
             return False
@@ -64,10 +64,10 @@ class Play:
     
         while placed_ships < self.board.num_ships:
             row = random.randint(0, size - 1)
-            col = random.randint(0, size - 1)
+            column = random.randint(0, size - 1)
         
-            if self.board.board[row][col] == '~':
-                self.board.board[row][col] = 'O'
+            if self.board.board[row][column] == '~':
+                self.board.board[row][column] = 'O'
                 placed_ships += 1
     
     
@@ -95,13 +95,13 @@ class Play:
         """
         while True:
             row = random.randint(0, size - 1)
-            col = random.randint(0, size - 1)
-            if (row, col) not in computer_has_guessed:
-                computer_has_guessed.add((row, col))
-                return row, col
+            column = random.randint(0, size - 1)
+            if (row, column) not in computer_has_guessed:
+                computer_has_guessed.add((row, column))
+                return row, column
 
 
-    def play_battleships(self, comp_board):
+    def play_battleships(self, computer_board):
         """
         function to make a move
         """
@@ -109,7 +109,7 @@ class Play:
         player_has_guessed = set()
         computer_has_guessed = set()
 
-        while player_board.hits < player_board.num_ships and comp_board.hits < comp_board.num_ships:
+        while player_board.hits < player_board.num_ships and computer_board.hits < computer_board.num_ships:
             print(f"{player_name}'s turn: \n")
             guess_row, guess_column = self.validate_guess()
 
@@ -118,28 +118,28 @@ class Play:
                 print("you've already guessed that!\n")
             else:
                 player_has_guessed.add((guess_row, guess_column))
-                if comp_board.get_guess(guess_row, guess_column):
+                if computer_board.get_guess(guess_row, guess_column):
                     print("HIT!")
                 else:
                     print("MISS!")
 
         player_board.print_board(hide_ships=False)
-        comp_board.print_board(hide_ships=True)
+        computer_board.print_board(hide_ships=True)
 
-        if comp_board.hits == comp_board.num_ships:
+        if computer_board.hits == computer_board.num_ships:
             print(f"congrtulations {player_name}, you've sunk all my battleships!")
             return 
 
-        comp_row, comp_col = self.computer_turn(computer_has_guessed, comp_board)
-        print(f"computer has guessed row {comp_row} and column {comp_col}")
+        comp_row, comp_column = self.computer_turn(computer_has_guessed, computer_board)
+        print(f"computer has guessed row {computer_row} and column {computer_col}")
 
-        if player_board.receive_guess(comp_row, comp_col):
+        if player_board.receive_guess(computer_row, computer_col):
             print("Computer HIT your ship!")
         else:
             print("Computer missed.")
 
         player_board.print_board(hide_ships=False)
-        comp_board.print_board(hide_ships=True)
+        computer_board.print_board(hide_ships=True)
 
         if player_board.hits == player_board.num_ships:
             print("Game over! The computer has sunk all your ships!")
@@ -151,23 +151,23 @@ num_ships = 3
 
 
 player_board = Board(size, num_ships, "Player")
-comp_board = Board(size, num_ships, "Computer")
+computer_board = Board(size, num_ships, "Computer")
 
 
 player_game = Play(player_board)
-comp_game = Play(comp_board)
+computer_game = Play(computer_board)
 
 
 player_name = name_and_rules()
 
 player_game.add_ships()
-comp_game.add_ships()
+computer_game.add_ships()
 
 player_board.print_board(hide_ships=False)
-comp_board.print_board(hide_ships=True)
+computer_board.print_board(hide_ships=True)
 
 
-player_game.play_battleships(comp_board)
+player_game.play_battleships(computer_board)
 
 
 
