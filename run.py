@@ -206,6 +206,10 @@ class Play:
         player_board.print_board(hide_ships=False)
         comp_board.print_board(hide_ships=True)
 
+        if comp_board.hits == comp_board.num_ships:
+            print(f"congrtulations {player_name}, you've sunk all my battleships!")
+            break
+
                 
     def computer_turn(computer_has_guessed):
         """
