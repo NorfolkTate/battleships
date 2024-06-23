@@ -112,6 +112,14 @@ class Play:
             print(f"congrtulations {player_name}, you've sunk all my battleships!")
             break
 
+        comp_row, comp_col = computer_turn(computer_has_guessed)
+        print(f"computer has guessed row {comp_row} and column {comp_col}")
+
+        if player_board.receive_guess(comp_row, comp_col):
+            print("Computer HIT your ship!")
+        else:
+            print("Computer missed.")
+
                 
     def computer_turn(computer_has_guessed):
         """
