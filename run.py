@@ -71,7 +71,7 @@ class Play:
                 placed_ships += 1
     
     
-    def validate_guess():
+    def validate_guess(self):
         """
         function to validate a player's input
         """
@@ -81,6 +81,7 @@ class Play:
                 guess_row = int(input("row number:\n")) - 1
                 print("guess a column: predict a number between 1 - 5")
                 guess_column = int(input("column number:\n")) - 1
+                
                 if 0 <= row < size and 0 <= col < size:
                     return row, col
                 else:
@@ -163,7 +164,7 @@ player_game.add_ships()
 comp_game.add_ships()
 
 
-
+player_game.play_battleships()
 
 
 
