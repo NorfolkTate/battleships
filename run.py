@@ -82,8 +82,8 @@ class Play:
                 print("guess a column: predict a number between 1 - 5")
                 guess_column = int(input("column number:\n")) - 1
                 
-                if 0 <= row < size and 0 <= col < size:
-                    return row, col
+                if 0 <= guess_row < size and 0 <= guess_column < size:
+                    return guess_row, guess_column
                 else:
                     print("please enter a number between 1 - 5\n")
             except ValueError:
@@ -114,11 +114,11 @@ class Play:
             guess_row, guess_column = self.validate_guess()
 
 
-            if (guess_row, guess_col) in player_has_guessed:
+            if (guess_row, guess_column) in player_has_guessed:
                 print("you've already guessed that!\n")
             else:
-                player_has_guessed.add((guess_row, guess_col))
-                if comp_board.get_guess(guess_row, guess_col):
+                player_has_guessed.add((guess_row, guess_column))
+                if comp_board.get_guess(guess_row, guess_column):
                     print("HIT!")
                 else:
                     print("MISS!")
