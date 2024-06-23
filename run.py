@@ -131,6 +131,13 @@ class Play:
         else:
             print("Computer missed.")
 
+        player_board.print_board(hide_ships=False)
+        comp_board.print_board(hide_ships=True)
+
+        if player_board.hits == player_board.num_ships:
+            print("Game over! The computer has sunk all your ships!")
+            break
+
 
 size = 5
 num_ships = 3
@@ -148,7 +155,6 @@ player_name = name_and_rules()
 
 player_game.add_ships()
 comp_game.add_ships()
-
 
 
 
