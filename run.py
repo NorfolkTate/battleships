@@ -99,7 +99,7 @@ class Play:
                 return row, col
 
 
-    def play_battleships(player_board, comp_board):
+    def play_battleships(self, comp_board):
         """
         function to make a move
         """
@@ -109,21 +109,26 @@ class Play:
 
         while player_board.hits < player_board.num_ships and comp_board.hits < comp_board.num_ships:
             print(f"{player_name}'s turn: \n")
-            guess_row, guess_column = validate_guess(player_has_guessed)
+            guess_row, guess_column = self.validate_guess()
 
-            if comp_board.receive_guess(player_row, player_col):
-                print("HIT!")
+
+            if (guess_row, guess_col) in player_has_guessed:
+                print("you've already guessed that!\n")
             else:
-                print("MISS!")   
+                player_has_guessed.add((guess_row, guess_col))
+                if comp_board.get_guess(guess_row, guess_col):
+                    print("HIT!")
+                else:
+                    print("MISS!")
 
         player_board.print_board(hide_ships=False)
         comp_board.print_board(hide_ships=True)
 
         if comp_board.hits == comp_board.num_ships:
             print(f"congrtulations {player_name}, you've sunk all my battleships!")
-            break
+            return 
 
-        comp_row, comp_col = computer_turn(computer_has_guessed)
+        comp_row, comp_col = self.computer_turn(computer_has_guessed, comp_board)
         print(f"computer has guessed row {comp_row} and column {comp_col}")
 
         if player_board.receive_guess(comp_row, comp_col):
@@ -136,7 +141,7 @@ class Play:
 
         if player_board.hits == player_board.num_ships:
             print("Game over! The computer has sunk all your ships!")
-            break
+            return
 
 
 size = 5
