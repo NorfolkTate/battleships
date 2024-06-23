@@ -163,6 +163,9 @@ player_name = name_and_rules()
 player_game.add_ships()
 comp_game.add_ships()
 
+player_board.print_board(hide_ships=False)
+comp_board.print_board(hide_ships=True)
+
 
 player_game.play_battleships(comp_board)
 
