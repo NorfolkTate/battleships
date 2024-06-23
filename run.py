@@ -87,6 +87,17 @@ class Play:
             except ValueError:
                 print("please enter a number between 1 - 5\n")
 
+    def computer_turn(computer_has_guessed):
+        """
+        function for the computer to guess
+        """
+        while True:
+            row = random.randint(0, size - 1)
+            col = random.randint(0, size - 1)
+            if (row, col) not in computer_has_guessed:
+                computer_has_guessed.add((row, col))
+                return row, col
+
 
     def play_battleships(player_board, comp_board):
         """
@@ -119,18 +130,6 @@ class Play:
             print("Computer HIT your ship!")
         else:
             print("Computer missed.")
-
-                
-    def computer_turn(computer_has_guessed):
-        """
-        function for the computer to guess
-        """
-        while True:
-            row = random.randint(0, size - 1)
-            col = random.randint(0, size - 1)
-            if (row, col) not in computer_has_guessed:
-                computer_has_guessed.add((row, col))
-                return row, col
 
 
 size = 5
