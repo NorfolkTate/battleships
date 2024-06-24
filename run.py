@@ -165,7 +165,7 @@ class Play:
                 return
 
 size = 5
-num_ships = 3
+num_ships = 5
 
 player_board = Board(size, num_ships, "Player")
 computer_board = Board(size, num_ships, "Computer")
