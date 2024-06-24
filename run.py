@@ -121,6 +121,16 @@ class Play:
         print("goodbye")
         sys.exit()
 
+    
+    def print_scoreboard():
+        """
+        function to print the scoreboard
+        """
+        print("Scoreboard:\n")
+        print(f"{player_name} - Hits: {self.board.hits}, Misses: {self.board.misses}, Ships Remaining: {self.board.ships_remaining}")
+        print(f"Computer - Hits: {computer_board.hits}, Misses: {computer_board.misses}, Ships Remaining: {computer_board.ships_remaining} \n")
+        print()
+
 
     def play_battleships(self, computer_board):
         """
