@@ -95,20 +95,21 @@ class Play:
 
     def computer_turn(self, computer_has_guessed):
         """
-        function for the computer to guess
+        Function for the computer to guess.
         """
         while True:
             computer_row = random.randint(0, self.board.size - 1)
             computer_column = random.randint(0, self.board.size - 1)
             if (computer_row, computer_column) not in computer_has_guessed:
                 computer_has_guessed.add((computer_row, computer_column))
+                return computer_row, computer_column
+
 
 
     def play_battleships(self, computer_board):
         """
-        function to make a move
+        Function to play the game.
         """
-
         player_has_guessed = set()
         computer_has_guessed = set()
 
@@ -116,9 +117,8 @@ class Play:
             print(f"{player_name}'s turn: \n")
             guess_row, guess_column = self.validate_guess()
 
-
             if (guess_row, guess_column) in player_has_guessed:
-                print("you've already guessed that!\n")
+                print("You've already guessed that!\n")
             else:
                 player_has_guessed.add((guess_row, guess_column))
                 if computer_board.get_guess(guess_row, guess_column):
@@ -126,27 +126,28 @@ class Play:
                 else:
                     print("MISS!")
 
-        self.board.print_board(hide_ships=False)
-        computer_board.print_board(hide_ships=True)
+            self.board.print_board(hide_ships=False)
+            computer_board.print_board(hide_ships=True)
 
-        if computer_board.hits == computer_board.num_ships:
-            print(f"congrtulations {player_name}, you've sunk all my battleships!")
-            return 
+            if computer_board.hits == computer_board.num_ships:
+                print(f"Congratulations {player_name}, you've sunk all the computer's battleships!")
+                return
 
-        computer_row, computer_column = self.computer_turn(computer_has_guessed)
-        print(f"computer has guessed row {computer_row} and column {computer_column}")
+            print("Computer's turn:")
+            computer_row, computer_column = self.computer_turn(computer_has_guessed)
+            print(f"Computer has guessed row {computer_row + 1} and column {computer_column + 1}")
 
-        if self.board.get_guess(computer_row, computer_column):
-            print("Computer HIT your ship!")
-        else:
-            print("Computer missed.")
+            if self.board.get_guess(computer_row, computer_column):
+                print("Computer HIT your ship!")
+            else:
+                print("Computer missed.")
 
-        self.board.print_board(hide_ships=False)
-        computer_board.print_board(hide_ships=True)
+            self.board.print_board(hide_ships=False)
+            computer_board.print_board(hide_ships=True)
 
-        if self.board.hits == self.board.num_ships:
-            print("Game over! The computer has sunk all your ships!")
-            return
+            if self.board.hits == self.board.num_ships:
+                print("Game over! The computer has sunk all your ships!")
+                return
 
 size = 5
 num_ships = 3
