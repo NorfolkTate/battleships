@@ -81,17 +81,24 @@ class Play:
         """
         while True:
             try:
-                print("guess a row: predict a number between 1 - 5")
-                guess_row = int(input("row number:\n")) - 1
-                print("guess a column: predict a number between 1 - 5")
-                guess_column = int(input("column number:\n")) - 1
-                
+                guess = input("guess a row between 1 - 5, or type 'quit' to exit:\n")
+                if guess.lower() == 'quit':
+                    self.quit_game()
+
+                guess_row = int(guess) - 1
+
+                guess = input("guess a column between 1 -5, or type 'quit' to exit:\n")
+                if guess.lower() == 'quit':
+                    self.quit_game()
+
+                guess_column = int(guess) - 1
+
                 if 0 <= guess_row < self.board.size and 0 <= guess_column < self.board.size:
                     return guess_row, guess_column
                 else:
-                    print("please enter a number between 1 - 5\n")
+                    print("Please enter a number between 1 - 5\n")
             except ValueError:
-                print("please enter a number between 1 - 5\n")
+                print("Please enter a number between 1 - 5\n")
 
     def computer_turn(self, computer_has_guessed):
         """
