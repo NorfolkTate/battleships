@@ -83,13 +83,13 @@ class Play:
         """
         while True:
             try:
-                guess = input("guess a row between 1 - 5, or type 'quit' to exit:\n")
+                guess = input("Guess a row between 1 - 5 followed by enter, or type 'quit' to exit:\n")
                 if guess.lower() == 'quit':
                     self.quit_game()
 
                 guess_row = int(guess) - 1
 
-                guess = input("guess a column between 1 -5, or type 'quit' to exit:\n")
+                guess = input("Guess a column between 1 -5 followed by enter, or type 'quit' to exit:\n")
                 if guess.lower() == 'quit':
                     self.quit_game()
 
@@ -98,9 +98,9 @@ class Play:
                 if 0 <= guess_row < self.board.size and 0 <= guess_column < self.board.size:
                     return guess_row, guess_column
                 else:
-                    print("Please enter a number between 1 - 5\n")
+                    print("Invalid guess: please enter a number between 1 - 5\n")
             except ValueError:
-                print("Please enter a number between 1 - 5\n")
+                print("Invalid guess: please enter a number between 1 - 5\n")
 
     def computer_turn(self, computer_has_guessed):
         """
@@ -135,34 +135,36 @@ class Play:
                 guess_row, guess_column = self.validate_guess()
 
                 if (guess_row, guess_column) in player_has_guessed:
-                    print("You've already guessed that! Try again.\n")
+                    print("You've already guessed that! Try again\n")
                 else:
                     player_has_guessed.add((guess_row, guess_column))
                     if computer_board.get_guess(guess_row, guess_column):
-                        print("HIT!")
+                        print("\n xxx HIT xxx \n")
                     else:
-                        print("MISS!")
+                        print("\n *** MISS*** \n")
                     break
 
             computer_board.print_board(hide_ships=True)
 
             if computer_board.hits == computer_board.num_ships:
-                print(f"Congratulations {player_name}, you've sunk all the computer's battleships!")
+                print(f"Congratulations {player_name}, you've sunk all the computer's battleships! \n")
+                print(f"{player_name} WINS!")
                 return
 
-            print("Computer's turn:")
+            print("Computer's turn:/n")
             computer_row, computer_column = self.computer_turn(computer_has_guessed)
-            print(f"Computer has guessed row {computer_row + 1} and column {computer_column + 1}")
+            print(f"Computer has guessed row {computer_row + 1} and column {computer_column + 1}\n")
 
             if self.board.get_guess(computer_row, computer_column):
-                print("Computer HIT your ship!")
+                print("\n xxx COMPUTER HIT xxx \n")
             else:
-                print("Computer missed.")
+                print("\n *** COMPUTER MISS *** \n")
 
             self.board.print_board(hide_ships=False)
 
             if self.board.hits == self.board.num_ships:
-                print("Game over! The computer has sunk all your ships!")
+                print("Game over! The computer has sunk all your ships!\n")
+                print(f"{player_name} LOSES!")
                 return
 
 size = 5
