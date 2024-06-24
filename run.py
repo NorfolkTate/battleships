@@ -126,7 +126,7 @@ class Play:
         sys.exit()
 
     
-    def print_scoreboard():
+    def print_scoreboard(self, computer_board):
         """
         function to print the scoreboard
         """
@@ -165,7 +165,7 @@ class Play:
                 print(f"{player_name} WINS!")
                 return
 
-            print("Computer's turn:/n")
+            print("Computer's turn:\n")
             computer_row, computer_column = self.computer_turn(computer_has_guessed)
             print(f"Computer has guessed row {computer_row + 1} and column {computer_column + 1}\n")
 
@@ -175,6 +175,7 @@ class Play:
                 print("\n *** COMPUTER MISS *** \n")
 
             self.board.print_board(hide_ships=False)
+            self.print_scoreboard(computer_board)
 
             if self.board.hits == self.board.num_ships:
                 print("Game over! The computer has sunk all your ships!\n")
