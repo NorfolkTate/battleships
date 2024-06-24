@@ -122,7 +122,7 @@ class Play:
         """
         function to quit game before someone wins
         """
-        print("goodbye")
+        print("\nThanks for playing... Goodbye!")
         sys.exit()
 
     
