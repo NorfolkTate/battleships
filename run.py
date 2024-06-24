@@ -196,9 +196,9 @@ class Play:
         """
 
         print("Scoreboard:\n")
-        print(f"{player_name} - Hits: {self.board.hits}, "
+        print(f"Computer - Hits: {self.board.hits}, "
               f"Misses: {self.board.misses}")
-        print(f"Computer - Hits: {computer_board.hits}, "
+        print(f"{player_name}- Hits: {computer_board.hits}, "
               f"Misses: {computer_board.misses}")
         print()
 
