@@ -1,5 +1,5 @@
-import random
-import sys
+import random # code courtesy of toppr (link ref in README)
+import sys # explanation from geeks for geeks (link ref in README)
 
 battleship_art = r"""
                                   )___(
@@ -43,7 +43,7 @@ __   _____  _   _   _     ___  ____  _____ _
   | || |_| | |_| | | |__| |_| |___) | |___|_|
   |_| \___/ \___/  |_____\___/|____/|_____(_)
 """
-
+# all ASCII art courtesy of https://www.asciiart.eu/ 
 
 class Board:
 
@@ -51,9 +51,9 @@ class Board:
     class for the game boards
     """
 
-    def __init__(self, size, num_ships, board_type):
+    def __init__(self, size, num_ships, board_type): # code explanation courtesy of code institute project scope (ref in README)
         self.size = size
-        self.board = [["~" for _ in range(size)] for _ in range(size)]
+        self.board = [["~" for _ in range(size)] for _ in range(size)] # code explanation courtsey of stack overflow (ref in README)
         self.num_ships = num_ships
         self.hits = 0
         self.misses = 0
@@ -68,9 +68,9 @@ class Board:
 
         print(f"{self.type} Board:")
 
-        print("  " + " ".join(str(x) for x in range(1, self.size + 1)))
+        print("  " + " ".join(str(x) for x in range(1, self.size + 1))) # code courtesy of code academy (ref in README)
 
-        for row_number, row in enumerate(self.board, start=1):
+        for row_number, row in enumerate(self.board, start=1): # code courtsey of stack overflow (ref in README)
             display_row = ['~' if hide_ships and cell == 'O'
                            else cell for cell in row]
             print(f"{row_number} {' '.join(display_row)}")
@@ -188,7 +188,7 @@ class Play:
         function to quit game before someone wins
         """
         print("\nThanks for playing... Goodbye!")
-        sys.exit()
+        sys.exit() # explanation from geeks for geeks (link ref in README)
 
     def print_scoreboard(self, computer_board):
         """
@@ -207,7 +207,8 @@ class Play:
         Function to play the game.
         """
         player_has_guessed = set()
-        computer_has_guessed = set()
+        computer_has_guessed = set() # code explanation courtsey of w3 schools (ref in README)
+
         while (self.board.hits < self.board.num_ships and
                computer_board.hits < computer_board.num_ships):
 
