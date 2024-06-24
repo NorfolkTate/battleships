@@ -12,6 +12,8 @@ class Board:
         self.board = [["~" for _ in range(size)] for _ in range(size)]
         self.num_ships = num_ships
         self.hits = 0
+        self.misses = 0
+        self.ships_remaining = num_ships
         self.type = board_type
 
     def print_board(self, hide_ships = False):
@@ -33,9 +35,11 @@ class Board:
         if self.board[row][column] == 'O':
             self.board[row][column] = 'X' 
             self.hits += 1
+            self.ships_remaining -= 1
             return True
         elif self.board[row][column] == '~':
             self.board[row][column] = '*' 
+            self.misses += 1
             return False
         else:
             return False
