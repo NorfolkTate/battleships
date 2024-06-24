@@ -129,17 +129,19 @@ class Play:
         computer_has_guessed = set()
 
         while self.board.hits < self.board.num_ships and computer_board.hits < computer_board.num_ships:
-            print(f"{player_name}'s turn: \n")
-            guess_row, guess_column = self.validate_guess()
+            while True:
+                print(f"{player_name}'s turn: \n")
+                guess_row, guess_column = self.validate_guess()
 
-            if (guess_row, guess_column) in player_has_guessed:
-                print("You've already guessed that!\n")
-            else:
-                player_has_guessed.add((guess_row, guess_column))
-                if computer_board.get_guess(guess_row, guess_column):
-                    print("HIT!")
+                if (guess_row, guess_column) in player_has_guessed:
+                    print("You've already guessed that! Try again.\n")
                 else:
-                    print("MISS!")
+                    player_has_guessed.add((guess_row, guess_column))
+                    if computer_board.get_guess(guess_row, guess_column):
+                        print("HIT!")
+                    else:
+                        print("MISS!")
+                    break
 
             self.board.print_board(hide_ships=False)
             computer_board.print_board(hide_ships=True)
