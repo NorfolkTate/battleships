@@ -6,18 +6,19 @@ class Board:
     class for the game boards
     """
 
-    def __init__(self, size, num_ships, type):
+    def __init__(self, size, num_ships, board_type):
         self.size = size
-        self.board = [["~" for x in range(size)] for y in range(size)]
+        self.board = [["~" for _ in range(size)] for _ in range(size)]
         self.num_ships = num_ships
         self.hits = 0
-        self.type = type
+        self.type = board_type
 
     def print_board(self, hide_ships = False):
         """
         function to print the boards to the terminal
         rows and columns start at 1 for a more user friendly experience
         """
+        print(f"{self.type} Board:")        
         print("  " + " ".join(str(x) for x in range(1, self.size + 1)))
         for row_number, row in enumerate(self.board, start=1):
             display_row = ['~' if hide_ships and cell == 'O' else cell for cell in row]
@@ -49,6 +50,7 @@ def name_and_rules():
     print("Guess a column between 1 - 5\n")
 
     print(f"Let's play battleships, {player_name}, good luck!")
+    
 
 
 class Play:
