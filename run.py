@@ -105,6 +105,13 @@ class Play:
                 return computer_row, computer_column
 
 
+    def quit_game(self):
+        """
+        function to quit game before someone wins
+        """
+        print("goodbye")
+        sys.exit()
+
 
     def play_battleships(self, computer_board):
         """
