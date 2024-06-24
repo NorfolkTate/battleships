@@ -143,7 +143,6 @@ class Play:
                         print("MISS!")
                     break
 
-            self.board.print_board(hide_ships=False)
             computer_board.print_board(hide_ships=True)
 
             if computer_board.hits == computer_board.num_ships:
@@ -160,7 +159,6 @@ class Play:
                 print("Computer missed.")
 
             self.board.print_board(hide_ships=False)
-            computer_board.print_board(hide_ships=True)
 
             if self.board.hits == self.board.num_ships:
                 print("Game over! The computer has sunk all your ships!")
