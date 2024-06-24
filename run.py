@@ -46,12 +46,13 @@ def name_and_rules():
     function to get user's name and display the rules
     of the game
     """
-    player_name = input("enter your name: \n")
-    print("Objective: sink all of the computer's ships first\n")
-    print("Guess a row between 1 - 5\n")
-    print("Guess a column between 1 - 5\n")
+    player_name = input("Please enter your name: \n")
+    print("\nObjective: sink all of the computer's ships...\n")
+    print("Rules: take turns to guess a row and column between 1 - 5...\n")
+    print("First one to sink all 5 ships wins...\n")
+    print("Key: ~ = the sea \n O = your ship \n * = a miss \n X = a hit\n")
 
-    print(f"Let's play battleships, {player_name}, good luck!")
+    print(f"Let's play battleships, {player_name}, good luck! \n")
     return player_name
 
 
