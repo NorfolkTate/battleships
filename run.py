@@ -45,8 +45,8 @@ def name_and_rules():
     """
     player_name = input("enter your name: \n")
     print("Objective: sink all of the computer's ships first\n")
-    print("Guess a row between 0 - 4")
-    print("Guess a column between 0 - 4\n")
+    print("Guess a row between 1 - 5\n")
+    print("Guess a column between 1 - 5\n")
 
     print(f"Let's play battleships, {player_name}, good luck!")
 
@@ -144,7 +144,6 @@ class Play:
         if player_board.hits == player_board.num_ships:
             print("Game over! The computer has sunk all your ships!")
             return
-
 
 size = 5
 num_ships = 3
