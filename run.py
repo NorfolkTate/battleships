@@ -23,6 +23,7 @@ class Board:
         for row_number, row in enumerate(self.board, start=1):
             display_row = ['~' if hide_ships and cell == 'O' else cell for cell in row]
             print(f"{row_number} {' '.join(display_row)}")
+        print()
 
     def get_guess(self, row, column):
         """
@@ -50,7 +51,8 @@ def name_and_rules():
     print("Guess a column between 1 - 5\n")
 
     print(f"Let's play battleships, {player_name}, good luck!")
-    
+    return player_name
+
 
 
 class Play:
@@ -84,7 +86,7 @@ class Play:
                 print("guess a column: predict a number between 1 - 5")
                 guess_column = int(input("column number:\n")) - 1
                 
-                if 0 <= guess_row < size and 0 <= guess_column < size:
+                if 0 <= guess_row < self.board.size and 0 <= guess_column < self.board.size:
                     return guess_row, guess_column
                 else:
                     print("please enter a number between 1 - 5\n")
@@ -96,11 +98,10 @@ class Play:
         function for the computer to guess
         """
         while True:
-            computer_row = random.randint(0, size - 1)
-            computer_column = random.randint(0, size - 1)
+            computer_row = random.randint(0, self.board.size - 1)
+            computer_column = random.randint(0, self.board.size - 1)
             if (computer_row, computer_column) not in computer_has_guessed:
                 computer_has_guessed.add((computer_row, computer_column))
-                return computer_row, computer_column
 
 
     def play_battleships(self, computer_board):
@@ -111,7 +112,7 @@ class Play:
         player_has_guessed = set()
         computer_has_guessed = set()
 
-        while player_board.hits < player_board.num_ships and computer_board.hits < computer_board.num_ships:
+        while self.board.hits < self.board.num_ships and computer_board.hits < computer_board.num_ships:
             print(f"{player_name}'s turn: \n")
             guess_row, guess_column = self.validate_guess()
 
@@ -125,48 +126,44 @@ class Play:
                 else:
                     print("MISS!")
 
-        player_board.print_board(hide_ships=False)
+        self.board.print_board(hide_ships=False)
         computer_board.print_board(hide_ships=True)
 
         if computer_board.hits == computer_board.num_ships:
             print(f"congrtulations {player_name}, you've sunk all my battleships!")
             return 
 
-        comp_row, comp_column = self.computer_turn(computer_has_guessed, computer_board)
-        print(f"computer has guessed row {computer_row} and column {computer_col}")
+        computer_row, computer_column = self.computer_turn(computer_has_guessed)
+        print(f"computer has guessed row {computer_row} and column {computer_column}")
 
-        if player_board.receive_guess(computer_row, computer_col):
+        if self.board.get_guess(computer_row, computer_column):
             print("Computer HIT your ship!")
         else:
             print("Computer missed.")
 
-        player_board.print_board(hide_ships=False)
+        self.board.print_board(hide_ships=False)
         computer_board.print_board(hide_ships=True)
 
-        if player_board.hits == player_board.num_ships:
+        if self.board.hits == self.board.num_ships:
             print("Game over! The computer has sunk all your ships!")
             return
 
 size = 5
 num_ships = 3
 
-
 player_board = Board(size, num_ships, "Player")
 computer_board = Board(size, num_ships, "Computer")
 
+player_name = name_and_rules()
 
 player_game = Play(player_board)
 computer_game = Play(computer_board)
-
-
-player_name = name_and_rules()
 
 player_game.add_ships()
 computer_game.add_ships()
 
 player_board.print_board(hide_ships=False)
 computer_board.print_board(hide_ships=True)
-
 
 player_game.play_battleships(computer_board)
 
