@@ -1,6 +1,52 @@
 import random
 import sys
 
+battleship_art = r"""
+                                  )___(
+                           _______/__/_
+                  ___     /===========|   ___
+ ____       __   [\\\]___/____________|__[///]   __
+ \   \_____[\\]__/___________________________\__[//]___
+  \40A                                                 |
+   \                                                  /
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""
+
+welcome_message = r"""
+ _  _  _       _                                        
+| || || |     | |                          _            
+| || || | ____| | ____ ___  ____   ____   | |_  ___     
+| ||_|| |/ _  ) |/ ___) _ \|    \ / _  )  |  _)/ _ \    
+| |___| ( (/ /| ( (__| |_| | | | ( (/ /   | |_| |_| |   
+ \______|\____)_|\____)___/|_|_|_|\____)   \___)___/    
+                                                        
+ _                    _            _     _            _ 
+| |          _   _   | |          | |   (_)          | |
+| | _   ____| |_| |_ | | ____  ___| | _  _ ____   ___| |
+| || \ / _  |  _)  _)| |/ _  )/___) || \| |  _ \ /___)_|
+| |_) | ( | | |_| |__| ( (/ /|___ | | | | | | | |___ |_ 
+|____/ \_||_|\___)___)_|\____|___/|_| |_|_| ||_/(___/|_|
+                                          |_|           
+"""
+
+win_message = r"""
+__   _____  _   _  __        _____ _   _ _ 
+\ \ / / _ \| | | | \ \      / /_ _| \ | | |
+ \ V / | | | | | |  \ \ /\ / / | ||  \| | |
+  | || |_| | |_| |   \ V  V /  | || |\  |_|
+  |_| \___/ \___/     \_/\_/  |___|_| \_(_)
+"""
+
+lose_message = r"""
+__   _____  _   _   _     ___  ____  _____ _ 
+\ \ / / _ \| | | | | |   / _ \/ ___|| ____| |
+ \ V / | | | | | | | |  | | | \___ \|  _| | |
+  | || |_| | |_| | | |__| |_| |___) | |___|_|
+  |_| \___/ \___/  |_____\___/|____/|_____(_)
+"""
+
+
+
 
 class Board:
     """
@@ -50,6 +96,8 @@ def name_and_rules():
     function to get user's name and display the rules
     of the game
     """
+    print(welcome_message)
+    print(battleship_art)
     player_name = input("Please enter your name: \n")
     print("\nObjective: sink all of the computer's ships...\n")
     print("Rules: take turns to guess a row and column between 1 - 5...\n")
@@ -162,7 +210,7 @@ class Play:
 
             if computer_board.hits == computer_board.num_ships:
                 print(f"Congratulations {player_name}, you've sunk all the computer's battleships! \n")
-                print(f"{player_name} WINS!")
+                print(win_message)
                 return
 
             print("Computer's turn:\n")
@@ -179,7 +227,7 @@ class Play:
 
             if self.board.hits == self.board.num_ships:
                 print("Game over! The computer has sunk all your ships!\n")
-                print(f"{player_name} LOSES!")
+                print(lose_message)
                 return
 
 size = 5
