@@ -231,7 +231,7 @@ class Play:
                     if computer_board.get_guess(guess_row, guess_column):
                         print("\n xxx HIT xxx \n")
                     else:
-                        print("\n *** MISS*** \n")
+                        print("\n *** MISS *** \n")
                     break
 
             # print computer board
